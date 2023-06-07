@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import Container from "../../shared/container/Container";
 
 const NavBar = () => {
   const navOption = (
     <>
-      <li className="flex flex-row">
+      <li className="flex md:flex-row md:text-white sm:text-black font-bold">
         <Link to="/">Home</Link>
         <Link to="/">Home</Link>
         <Link to="/">Home</Link>
@@ -14,8 +13,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <Container>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 fixed z-10 bg-opacity-30 md:px-20 sm:px-2">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -41,16 +39,17 @@ const NavBar = () => {
               {navOption}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">PlayInspire</a>
+          <a style={{ fontFamily: "font-Cinzel" }} className="btn btn-ghost normal-case text-xl md:text-white">PlayInspire</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOption}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div>
+        <div className="avatar navbar-end">
+  <div className="w-14 mask mask-hexagon">
+    <img src={`https://i.ibb.co/h1mdkPZ/Mahmud-Hasan.jpg`} />
+  </div>
+</div>
       </div>
-    </Container>
   );
 };
 
