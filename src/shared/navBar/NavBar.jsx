@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user)
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navOption = (
     <>
       <li className="flex md:flex-row text-lg md:text-yellow-600 sm:text-black font-semibold">
@@ -12,6 +24,7 @@ const NavBar = () => {
       </li>
     </>
   );
+
   return (
     <div className="navbar bg-base-100 fixed z-10 bg-opacity-20 md:px-20 sm:px-2">
       <div className="navbar-start">
@@ -53,13 +66,23 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navOption}</ul>
       </div>
       <div className="avatar navbar-end gap-4 text-white">
-        <>
-        <Link to="/logIn">Login</Link>
-        <Link to="/signUp">Register</Link>
-        </>
-        <div className="w-14 mask mask-hexagon">
-          <img src={`https://i.ibb.co/h1mdkPZ/Mahmud-Hasan.jpg`} />
+        {user ? (
+          <>
+            <button className="btn btn-active btn-ghost"><Link onClick={handleLogOut}>
+              Logout
+            </Link></button>
+          </>
+        ) : (
+          <>
+            <Link to="/logIn">Login</Link>
+            <Link to="/signUp">Register</Link>
+          </>
+        )}
+        {user &&
+          <div className="w-14 mask mask-hexagon">
+          <img title={user?.displayName} src={user?.photoURL} />
         </div>
+        }
       </div>
     </div>
   );

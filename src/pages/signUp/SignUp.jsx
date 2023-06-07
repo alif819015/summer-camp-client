@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import "../signUp/SignUp.css";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
+const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -29,6 +31,7 @@ const SignUp = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/");
         })
         .catch((error) => {
           console.log(error);

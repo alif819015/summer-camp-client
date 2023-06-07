@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const Login = () => {
     const {loginUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathName || "/";
 
 
     const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
@@ -22,11 +25,11 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
         });
+        navigate(from, { replace: true});
         })
         .catch(error =>{
             console.log(error);
         })
-        console.log(data)
     };
     return (
         <div className="bgImageLogin hero min-h-screen bg-base-200">
