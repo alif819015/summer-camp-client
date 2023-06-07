@@ -1,3 +1,6 @@
-.bgImage{
-    background-image: url(/src/assets/logo/login.jpeg);
+.bgImageLogin{
+    background-image: url(/src/assets/logo/login.jpg);
+}
+.bgImageSignUp{
+    background-image: url(/src/assets/logo/signup.jpg);
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
     return (
-        <div className="bgImage hero min-h-screen bg-base-200">
+        <div className="bgImageLogin hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl text-white font-bold px-10">Please Login!</h1>
@@ -34,7 +34,7 @@ const Login = () => {
             </div>
             <a href="#" className="label-text-alt link link-hover text-center">
               New to please {" "}
-              <Link to="/Sign up">
+              <Link to="/signUp">
                 <span className="text-purple-600 font-semibold">SignUp</span>
               </Link>
             </a>
