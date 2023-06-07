@@ -3,9 +3,10 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const {loginUser, googleLogin, githubUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathName || "/";
@@ -31,6 +32,28 @@ const Login = () => {
             console.log(error);
         })
     };
+
+    const handleGoogle = () =>{
+      googleLogin()
+      .then(result =>{
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+    }
+
+    const handleGithub = () =>{
+      githubUser()
+      .then(result =>{
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+    }
     return (
         <div className="bgImageLogin hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
@@ -70,6 +93,11 @@ const Login = () => {
                 <span className="text-purple-600 font-semibold">SignUp</span>
               </Link>
             </a>
+            <div className="divider">OR</div>
+            <div className="flex gap-4 text-3xl mx-auto">
+              <FaGoogle onClick={handleGoogle} className="text-blue-600"></FaGoogle>
+              <FaGithub onClick={handleGithub} ></FaGithub>
+            </div>
           </Form>
         </div>
       </div>
