@@ -1,14 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const {loginUser, googleLogin, githubUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
     const from = location.state?.from?.pathName || "/";
 
 
@@ -73,16 +74,24 @@ const Login = () => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword? 'text' : 'password'}
                 placeholder="password"
                 {...register("password", { required: true })}
                 className="input input-bordered"
               />
+              <button className="absolute right-0 mt-12 mr-7" onClick={()=> setShowPassword(!showPassword)}>
+            {/* <div className="absolute right-0 mt-12 mr-7"><BiShowAlt  className="text-xl"></BiShowAlt></div> */}
+{
+  showPassword?
+  <FaEye  className="text-xl"></FaEye>:
+  <FaEyeSlash  className="text-xl"></FaEyeSlash>
+}
+              </button>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
