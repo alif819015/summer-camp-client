@@ -1,6 +1,33 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Form, Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {loginUser} = useContext(AuthContext);
+
+
+    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        loginUser(data.email, data.password)
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Login Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+        console.log(data)
+    };
     return (
         <div className="bgImageLogin hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
@@ -8,7 +35,7 @@ const Login = () => {
           <h1 className="text-5xl text-white font-bold px-10">Please Login!</h1>
         </div>
         <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-          <div className="card-body">
+          <Form  onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -16,6 +43,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
+                {...register("email", { required: true })}
                 className="input input-bordered"
               />
             </div>
@@ -26,6 +54,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
+                {...register("password", { required: true })}
                 className="input input-bordered"
               />
             </div>
@@ -38,7 +67,7 @@ const Login = () => {
                 <span className="text-purple-600 font-semibold">SignUp</span>
               </Link>
             </a>
-          </div>
+          </Form>
         </div>
       </div>
     </div>
