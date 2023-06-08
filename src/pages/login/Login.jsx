@@ -90,7 +90,7 @@ const Login = () => {
                 {...register("password", { required: true })}
                 className="input input-bordered"
               />
-              <button
+              <p
                 className="absolute right-0 mt-12 mr-7"
                 onClick={() => setShowPassword(!showPassword)}
               >
@@ -99,10 +99,10 @@ const Login = () => {
                 ) : (
                   <FaEyeSlash className="text-xl"></FaEyeSlash>
                 )}
-              </button>
+              </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button type="submit" className="btn btn-primary">Login</button>
             </div>
             <a href="#" className="label-text-alt link link-hover text-center">
               New to please{" "}
