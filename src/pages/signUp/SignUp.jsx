@@ -1,13 +1,15 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import "../signUp/SignUp.css";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const {
     register,
@@ -17,12 +19,31 @@ const navigate = useNavigate();
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    if (!/^.{6,}$/.test(data.password)) {
+      setError("Please provide at list 6 character");
+      return;
+    }
+    
+    if (!/(?=.*[A-Z])/.test(data.password)) {
+      setError("Please at least add one Uppercase");
+      return;
+    }
+    
+    if (!/(?=.*[!@#$&*])/.test(data.password)) {
+      setError("Please at least add one special character");
+      return;
+    }
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      setError("");
+      setSuccess("");
+
+      
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           console.log("updated your profile");
+          setSuccess("User Has ben created success fully");
           reset();
           Swal.fire({
             position: "top-end",
@@ -34,7 +55,7 @@ const navigate = useNavigate();
           navigate("/");
         })
         .catch((error) => {
-          console.log(error);
+          setError(error.message);
         });
     });
   };
@@ -104,6 +125,16 @@ const navigate = useNavigate();
                 className="input input-bordered"
               />
             </div>
+
+            {/* TODO  */}
+            <div className="form-control">
+              <select {...register("gender")}>
+                <option value="female">female</option>
+                <option value="male">male</option>
+                <option value="other">other</option>
+              </select>
+            </div>
+
             <div className="form-control mt-6">
               <input
                 type="submit"
@@ -111,6 +142,12 @@ const navigate = useNavigate();
                 value="Sign Up"
               />
             </div>
+            <a className="text-red-600 text-center">
+            <p>{error}</p>
+            </a>
+            <a className="text-green-600 text-center">
+            <p>{success}</p>
+            </a>
             <a href="#" className="label-text-alt link link-hover text-center">
               Already have an account{" "}
               <Link to="/logIn">
