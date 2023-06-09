@@ -6,6 +6,7 @@ import Home from "../pages/home/home/Home";
 import Login from "../pages/login/Login";
 import SignUp from "../pages/signUp/Signup";
 import Error from "../components/error/Error";
+import AllClass from "../pages/home/allClass/AllClass";
 
   export const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ import Error from "../components/error/Error";
         {
           path:'/error',
           element: <Error></Error>
+        },
+        {
+          path:'/allClass',
+          element: <AllClass></AllClass>
         },
       ]
     },

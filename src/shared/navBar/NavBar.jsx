@@ -19,7 +19,7 @@ const NavBar = () => {
       <li className="flex md:flex-row text-lg md:text-yellow-600 sm:text-black font-semibold">
         <Link to="/">Home</Link>
         <Link to="/">Instructors</Link>
-        <Link to="/">Classes</Link>
+        <Link to="/allClass">Classes</Link>
         <Link to="/">Dashboard </Link>
       </li>
     </>
