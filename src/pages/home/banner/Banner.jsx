@@ -3,19 +3,20 @@ import { Carousel } from 'react-responsive-carousel';
 import ban1 from '../../../assets/banner/football.jpg';
 import ban2 from '../../../assets/banner/basket.jpg';
 import ban3 from '../../../assets/banner/crecate.jpg';
+import Cover from "../../../shared/cover/Cover";
 
 const Banner = () => {
     
     return (
         <Carousel>
                 <div>
-                    <img src={ban1} />
+                    <Cover img={ban1} title='sports' subTitle='jhgfddnm'></Cover>
                 </div>
                 <div>
-                    <img src={ban2} />
+                <Cover img={ban2} title='sports' subTitle='jhgfddnm'></Cover>
                 </div>
                 <div>
-                    <img src={ban3} />
+                <Cover img={ban3} title='sports' subTitle='jhgfddnm'></Cover>
                 </div>
             </Carousel>
     );

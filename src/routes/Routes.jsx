@@ -7,6 +7,7 @@ import Login from "../pages/login/Login";
 import SignUp from "../pages/signUp/Signup";
 import Error from "../components/error/Error";
 import AllClass from "../pages/home/allClass/AllClass";
+import AllInstructor from "../pages/home/allInstractore/AllInstructor";
 
   export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ import AllClass from "../pages/home/allClass/AllClass";
         {
           path:'/allClass',
           element: <AllClass></AllClass>
+        },
+        {
+          path:'/allInstructor',
+          element: <AllInstructor></AllInstructor>
         },
       ]
     },
