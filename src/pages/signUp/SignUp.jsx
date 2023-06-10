@@ -15,8 +15,6 @@ const SignUp = () => {
     register,
     handleSubmit,
     reset,
-    watch,
-    formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     if (!/^.{6,}$/.test(data.password)) {
@@ -64,7 +62,7 @@ const SignUp = () => {
     <div className="bgImageSignUp hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl text-white font-bold px-10">
+          <h1 className="text-5xl text-black font-bold px-10">
             Please Sign Up!
           </h1>
         </div>
@@ -150,8 +148,8 @@ const SignUp = () => {
             </a>
             <a href="#" className="label-text-alt link link-hover text-center">
               Already have an account{" "}
-              <Link to="/logIn">
-                <span className="text-purple-600 font-semibold">Login</span>
+              <Link to="/login">
+                <span className="text-purple-600 font-semibold">login</span>
               </Link>
             </a>
           </Form>

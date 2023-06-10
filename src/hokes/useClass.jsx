@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
 const useClass = () => {
-    const [users, setUsers] = useState([]);
+    const [menu, setmenu] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
         fetch('http://localhost:5000/topClass')
         .then( res => res.json())
         .then( data => {
-            setUsers(data)
+            setmenu(data)
             setLoading(false);
         })
     },[])
-    return [users, loading]
+    return [menu, loading]
 }
 export default useClass;

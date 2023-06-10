@@ -4,8 +4,8 @@ import PopularItem from "../../../shared/popularItem/PopularItem";
 import useClass from "../../../hokes/useClass";
 
 const PopularClass = () => {
-    const [users] = useClass();
-    const popularClass = users.filter(item => item.category === 'Football')
+    const [menu] = useClass();
+    const popularClass = menu.filter(item => item.category === 'Football')
    
     return (
         <Container>

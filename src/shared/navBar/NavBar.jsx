@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { FaCartPlus } from 'react-icons/fa';
+import useCart from "../../hokes/useCart";
+
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -21,6 +25,12 @@ const NavBar = () => {
         <Link to="/allInstructor">Instructors</Link>
         <Link to="/allClass">Classes</Link>
         <Link to="/">Dashboard </Link>
+        <Link to="">
+          <button className="btn btn-active btn-ghost">
+            <FaCartPlus className="text-xl text-white"></FaCartPlus>
+            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+          </button>
+        </Link>
       </li>
     </>
   );
@@ -68,21 +78,21 @@ const NavBar = () => {
       <div className="avatar navbar-end gap-4 text-white">
         {user ? (
           <>
-            <button className="btn btn-active btn-ghost"><Link onClick={handleLogOut}>
-              Logout
-            </Link></button>
+            <button className="btn btn-active btn-ghost">
+              <Link onClick={handleLogOut}>Logout</Link>
+            </button>
           </>
         ) : (
           <>
-            <Link to="/logIn">Login</Link>
+            <Link to="/login">login</Link>
             <Link to="/signUp">Register</Link>
           </>
         )}
-        {user &&
+        {user && (
           <div className="w-14 mask mask-hexagon">
-          <img title={user?.displayName} src={user?.photoURL} />
-        </div>
-        }
+            <img title={user?.displayName} src={user?.photoURL} />
+          </div>
+        )}
       </div>
     </div>
   );

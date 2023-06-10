@@ -5,18 +5,18 @@ import Cover from "../../../shared/cover/Cover";
 import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 
 const AllInstructor = () => {
-  const [users, setUsers] = useState([]);
+  const [menu, setmenu] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/instractore")
       .then((res) => res.json())
-      .then((data) => setUsers(data));
+      .then((data) => setmenu(data));
   }, []);
   return (
     <div>
       <Cover img={img}></Cover>
       <SectionTitle heading='Instructors'></SectionTitle>
       <div className="my-10 mx-16 grid md:grid-cols-3 gap-8">
-        {users.map((item) => (
+        {menu.map((item) => (
           <InstructorCard key={item._id} item={item}></InstructorCard>
         ))}
       </div>
