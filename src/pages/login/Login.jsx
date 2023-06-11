@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
-  const {  loginUser, googleLogin, githubUser } = useContext(AuthContext)
+  const {  loginUser } = useContext(AuthContext)
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -38,27 +39,7 @@ const Login = () => {
       });
   };
 
-  const handleGoogle = () => {
-    googleLogin()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleGithub = () => {
-    githubUser()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  
 
   return (
     <div className="bgImagelogin hero min-h-screen bg-base-200">
@@ -109,15 +90,11 @@ const Login = () => {
                 <span className="text-purple-600 font-semibold">SignUp</span>
               </Link>
             </a>
-            <div className="divider">OR</div>
-            <div className="flex gap-4 text-3xl mx-auto">
-              <FaGoogle
-                onClick={handleGoogle}
-                className="text-blue-600"
-              ></FaGoogle>
-              <FaGithub onClick={handleGithub}></FaGithub>
-            </div>
           </Form>
+            <div className="divider">OR</div>
+            <div className=" mb-8 flex gap-4 text-3xl mx-auto">
+            <SocialLogin></SocialLogin>
+            </div>
         </div>
       </div>
     </div>

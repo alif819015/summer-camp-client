@@ -1,7 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBeer, FaHome, FaShoppingCart, FaWallet } from 'react-icons/fa';
+import useCart from "../hokes/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
+
+    const isAdmin = true;
+    const isInstructor = true;
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -17,17 +22,58 @@ const Dashboard = () => {
       <div className="drawer-side bg-gray-500">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-gray-500 ">
-          {/* Sidebar content here */}
-          <li>
-            <NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink>
+          {
+           ( isAdmin &&
+            <>
+            <li>
+            <NavLink to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink>
+            <NavLink to='/dashboard/history'><FaWallet></FaWallet> Manage Classes</NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart</NavLink>
+            <NavLink to='/dashboard/allUser'><FaShoppingCart></FaShoppingCart> All Users</NavLink>
           </li>
-          <div className="divider">OR</div>
+            </>)
+            ||
+            ( isInstructor &&
+                <>
+                <li>
+                <NavLink to='/dashboard/home'><FaHome></FaHome> Instructor Home</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Add Student</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Enrolled</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Feedback</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart
+                <span className="badge badge-secondary">+{cart?.length || 0}</span>
+                </NavLink>
+              </li>
+                </>
+                ||
+                <>
+                <li>
+                <NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart
+                <span className="badge badge-secondary">+{cart?.length || 0}</span>
+                </NavLink>
+              </li>
+                </>
+                )
+          }
+          
+          <div className="divider"></div>
           <li>
             <NavLink to='/'><FaHome></FaHome> Home</NavLink>
           </li>

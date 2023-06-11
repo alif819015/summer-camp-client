@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -11,22 +12,18 @@ const SignUp = () => {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     if (!/^.{6,}$/.test(data.password)) {
       setError("Please provide at list 6 character");
       return;
     }
-    
+
     if (!/(?=.*[A-Z])/.test(data.password)) {
       setError("Please at least add one Uppercase");
       return;
     }
-    
+
     if (!/(?=.*[!@#$&*])/.test(data.password)) {
       setError("Please at least add one special character");
       return;
@@ -37,10 +34,28 @@ const SignUp = () => {
       setError("");
       setSuccess("");
 
-      
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("updated your profile");
+          const saveUser = {name: data.name, email: data.email}
+          fetch("http://localhost:5000/users",{
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(saveUser)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
           setSuccess("User Has ben created success fully");
           reset();
           Swal.fire({
@@ -141,10 +156,10 @@ const SignUp = () => {
               />
             </div>
             <a className="text-red-600 text-center">
-            <p>{error}</p>
+              <p>{error}</p>
             </a>
             <a className="text-green-600 text-center">
-            <p>{success}</p>
+              <p>{success}</p>
             </a>
             <a href="#" className="label-text-alt link link-hover text-center">
               Already have an account{" "}
@@ -153,6 +168,10 @@ const SignUp = () => {
               </Link>
             </a>
           </Form>
+          <div className="divider">OR</div>
+            <div className=" mb-8 flex gap-4 text-3xl mx-auto">
+            <SocialLogin></SocialLogin>
+            </div>
         </div>
       </div>
     </div>
