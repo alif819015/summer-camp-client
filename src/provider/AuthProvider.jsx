@@ -67,13 +67,14 @@ displayName: name , photoURL: photo
         .then(data =>{
           console.log(data.data.token)
           localStorage.setItem('access-token', data.data.token)
+          setLoading(false);
         })
       }
       else{
         localStorage.removeItem('access-token')
+        setLoading(false);
       }
 
-      setLoading(false)
     });
     return () => {
       return unsubscribe();

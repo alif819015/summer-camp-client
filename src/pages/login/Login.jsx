@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, useState } from "react";
-import { Form, Link, useLocation, useNavigate } from "react-router-dom";
+import { Form, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -7,12 +8,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
-  const {  loginUser } = useContext(AuthContext)
+  const { user, loginUser } = useContext(AuthContext)
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const from = location.state?.from?.pathname || "/";
-  console.log(location)
+
+  console.log(from,location)
+  
 
   const {
     register,
@@ -39,10 +42,12 @@ const Login = () => {
       });
   };
 
-  
+  if(user?.uid){
+    return <Navigate to={from}/> 
+  }
 
   return (
-    <div className="bgImagelogin hero min-h-screen bg-base-200">
+    <div className="bgImage hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl text-white font-bold px-10">Please login!</h1>
