@@ -25,7 +25,7 @@ const NavBar = () => {
         <Link to="/allInstructor">Instructors</Link>
         <Link to="/allClass">Classes</Link>
         <Link to="/">Dashboard </Link>
-        <Link to="">
+        <Link to="/dashboard/myCart">
           <button className="btn btn-active btn-ghost">
             <FaCartPlus className="text-xl text-white"></FaCartPlus>
             <div className="badge badge-secondary">+{cart?.length || 0}</div>

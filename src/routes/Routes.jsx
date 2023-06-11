@@ -9,6 +9,8 @@ import Error from "../components/error/Error";
 import AllClass from "../pages/home/allClass/AllClass";
 import AllInstructor from "../pages/home/allInstractore/AllInstructor";
 import PrivateRoute from "./privateRoute/PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+import MyCart from "../pages/dashboard/myCart/MyCart";
 
   export const router = createBrowserRouter([
     {
@@ -42,4 +44,14 @@ import PrivateRoute from "./privateRoute/PrivateRoute";
         },
       ]
     },
+    {
+      path:'dashboard',
+      element: <Dashboard></Dashboard>,
+      children:[
+        {
+          path: 'myCart',
+          element: <MyCart></MyCart>
+        }
+      ]
+    }
   ]);
