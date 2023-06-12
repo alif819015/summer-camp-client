@@ -34,10 +34,7 @@ const NavBar = () => {
         isInstructor?
         <Link to="/dashboard/instructorHome">Dashboard </Link>:
         <Link to="/dashboard/userHome">Dashboard </Link>
-
         }
-
-
         <Link to="/dashboard">
           <button className="btn btn-active btn-ghost">
             <FaCartPlus className="text-xl text-white"></FaCartPlus>
@@ -112,3 +109,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

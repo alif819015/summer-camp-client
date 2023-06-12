@@ -6,25 +6,26 @@ const Footer = () => {
     <div className="bg-gray-500 text-white">
       <footer className="footer p-10 ">
         <div>
-          {/* TODO:  */}
           <img className="w-20" src={logo} alt="" />
           <p>
             <span className="text-2xl font-semibold">PlayInspire</span>
             <br />
-            Providing reliable tech since 1992
+            
           </p>
         </div>
         <div>
           <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <a className="link link-hover">Please contact us at:</a>
+          <a className="link link-hover">Email: info@sports.com</a>
+          <a className="link link-hover">Phone: +1-123-456-7890</a>
+          <a className="link link-hover">Privacy Policy</a>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
+          <a className="link link-hover"> Address: </a>
+          <a className="link link-hover">123 Main Street        |
+|    City, State ZIP        |
+|    Country </a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </div>

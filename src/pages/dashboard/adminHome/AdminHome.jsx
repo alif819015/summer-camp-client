@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hokes/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { FaMoneyBillAlt, FaShopify, FaUser, FaUsers } from "react-icons/fa";
 
 const AdminHome = () => {
     const {user} = useContext(AuthContext);
@@ -21,30 +22,26 @@ const AdminHome = () => {
         <div className="w-full mt-10 min-h-full">
             <h3 className="text-3xl text-center font-semibold">~~~Welcome to: {user?.displayName}~~~</h3>
 
-            <div className="stats stats-vertical shadow">
+            <div className="ml-10 mt-10 stats stats-vertical shadow">
   
-  <div className="stat">
-    <div className="stat-title">User</div>
-    <div className="stat-value">{stats.users}</div>
-    <div className="stat-desc">Jan 1st - Feb 1st</div>
+  <div className="stat bg-red-200">
+    <div className="stat-title font-bold text-xl text-black">User</div>
+    <div className="stat-value flex items-center gap-4">{stats.users} <span className="text-2xl text-purple-600"><FaUser></FaUser></span></div>
   </div>
   
-  <div className="stat">
-    <div className="stat-title">All Users</div>
-    <div className="stat-value">{stats.topClass}</div>
-    <div className="stat-desc">↗︎ 400 (22%)</div>
+  <div className="stat bg-blue-200">
+    <div className="stat-title font-bold text-xl text-black">All Users</div>
+    <div className="stat-value flex items-center gap-4">{stats.topClass}<span className="text-2xl text-purple-600"><FaUsers></FaUsers></span></div>
   </div>
   
-  <div className="stat">
-    <div className="stat-title">Total Price</div>
-    <div className="stat-value">${stats.revenue}</div>
-    <div className="stat-desc">↘︎ 90 (14%)</div>
+  <div className="stat bg-purple-200">
+    <div className="stat-title font-bold text-xl text-black">Total Price</div>
+    <div className="stat-value flex items-center gap-4">${stats.revenue}<span className="text-2xl text-purple-600"><FaMoneyBillAlt></FaMoneyBillAlt></span></div>
   </div>
 
-  <div className="stat">
-    <div className="stat-title">Total Order</div>
-    <div className="stat-value">{stats.orders}</div>
-    <div className="stat-desc">↘︎ 90 (14%)</div>
+  <div className="stat bg-emerald-200">
+    <div className="stat-title font-bold text-xl text-black">Total Order</div>
+    <div className="stat-value flex items-center gap-4">{stats.orders}<span className="text-2xl text-purple-600"><FaShopify></FaShopify></span></div>
   </div>
   
 </div>

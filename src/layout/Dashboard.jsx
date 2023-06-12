@@ -59,7 +59,7 @@ const {user} = useContext(AuthContext);
           ) : isInstructor ? (
             <>
               <li>
-                <NavLink to="/dashboard/home">
+                <NavLink to="/dashboard/instructorHome">
                   <FaHome></FaHome> Instructor Home
                 </NavLink>
               </li>
@@ -86,12 +86,12 @@ const {user} = useContext(AuthContext);
           ) : (
             <>
               <li>
-                <NavLink to="/dashboard/home">
+                <NavLink to="/dashboard/userHome">
                   <FaHome></FaHome> User Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/paymentHistory">
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>
