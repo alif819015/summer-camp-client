@@ -1,6 +1,7 @@
 import { FaTrash } from "react-icons/fa";
-import useCart from "../../../hokes/useCart";
+import useCart from "../../../../hokes/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -79,7 +80,9 @@ const MyCart = () => {
                   <button onClick={()=> handleDelete(item)} className="btn btn-ghost bg-purple-600 text-white"><FaTrash></FaTrash></button>
                 </th>
                 <th>
+                  <Link to='/dashboard/payment'>
                   <button className="btn btn-xs btn-success">Pay</button>
+                  </Link>
                 </th>
               </tr>)
             }

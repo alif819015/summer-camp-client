@@ -10,12 +10,13 @@ import AllClass from "../pages/home/allClass/AllClass";
 import AllInstructor from "../pages/home/allInstractore/AllInstructor";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import Dashboard from "../layout/Dashboard";
-import MyCart from "../pages/dashboard/myCart/MyCart";
-import AllUser from "../pages/dashboard/AllUser";
+import MyCart from "../pages/dashboard/myCart/myCart/MyCart";
 import AddClass from "../pages/dashboard/myCart/addClass/AddClass";
 import InstructorRouter from "./privateRoute/InstructorRouter";
 import AdminRouter from "./privateRoute/AdminRouter";
-import ManageUser from "../pages/dashboard/ManageUser";
+import ManageClass from "../pages/dashboard/manageClass/ManageClass";
+import ManageUser from "../pages/dashboard/manageUser/ManageUser";
+import Payment from "../pages/dashboard/payment/Payment";
 
   export const router = createBrowserRouter([
     {
@@ -58,16 +59,21 @@ import ManageUser from "../pages/dashboard/ManageUser";
           element: <MyCart></MyCart>
         },
         {
-          path: 'allUser',
-          element: <AllUser></AllUser>
+          path: 'payment',
+          element: <Payment></Payment>
+        },
+
+        {
+          path: 'manageUser',
+          element: <ManageUser></ManageUser>
         },
         {
           path: 'addClass',
           element: <InstructorRouter><AddClass></AddClass></InstructorRouter>
         },
         {
-          path: 'manageUser',
-          element: <AdminRouter><ManageUser></ManageUser></AdminRouter>
+          path: 'manageClass',
+          element: <AdminRouter><ManageClass></ManageClass></AdminRouter>
         },
       ]
     }

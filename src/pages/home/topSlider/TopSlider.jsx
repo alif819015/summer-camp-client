@@ -16,14 +16,14 @@ const TopSlider = () => {
       <Container>
         <Swiper
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={4}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img src={img1} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img1} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Lionel Messi</h2>
@@ -33,9 +33,9 @@ const TopSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img style={{height:"510px"}} src={img2} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img2} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Kawhi Leonard</h2>
@@ -45,9 +45,9 @@ const TopSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img style={{height:"510px"}} src={img3} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img3} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Shahid Afridi</h2>
@@ -57,9 +57,9 @@ const TopSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img style={{height:"510px"}} src={img4} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img4} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Cristiano Ronaldo</h2>
@@ -69,9 +69,9 @@ const TopSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img style={{height:"510px"}} src={img5} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img5} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Damian Lillard</h2>
@@ -81,9 +81,9 @@ const TopSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-64 bg-base-100 shadow-xl">
               <figure>
-                <img style={{height:"510px"}} src={img6} alt="" />
+                <img className="h-[200px] md:h-[300px] w-full" src={img6} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Shane Watson</h2>

@@ -32,13 +32,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageUser">
-                  <FaWallet></FaWallet> Manage User
+                <NavLink to="/dashboard/manageClass">
+                  <FaWallet></FaWallet> Manage Class
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/allUser">
-                  <FaShoppingCart></FaShoppingCart> All Users
+                <NavLink to="/dashboard/manageUser">
+                  <FaShoppingCart></FaShoppingCart> Manage User
                 </NavLink>
               </li>
             </>
@@ -95,57 +95,6 @@ const Dashboard = () => {
               </li>
             </>
           )}
-
-          {/* {
-           ( isAdmin &&
-            <>
-            <li>
-            <NavLink to='/dashboard/home'><FaHome></FaHome> Admin Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='/dashboard/history'><FaWallet></FaWallet> Manage Classes</NavLink>
-          </li>
-          <li>
-            <NavLink to='/dashboard/allUser'><FaShoppingCart></FaShoppingCart> All Users</NavLink>
-          </li>
-            </>)
-            ||
-            ( isInstructor &&
-                <>
-                <li>
-                <NavLink to='/dashboard/home'><FaHome></FaHome> Instructor Home</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Add Class</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Enrolled</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Feedback</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart
-                <span className="badge badge-secondary">+{cart?.length || 0}</span>
-                </NavLink>
-              </li>
-                </>
-                ||
-                <>
-                <li>
-                <NavLink to='/dashboard/home'><FaHome></FaHome> User Home</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart> My Cart
-                <span className="badge badge-secondary">+{cart?.length || 0}</span>
-                </NavLink>
-              </li>
-                </>
-                )
-          } */}
 
           <div className="divider"></div>
           <li>

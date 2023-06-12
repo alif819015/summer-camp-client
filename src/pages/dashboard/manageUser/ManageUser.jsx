@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hokes/useAxiosSecure";
+import useAxiosSecure from "../../../hokes/useAxiosSecure";
+import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 
-const AllUser = () => {
+const ManageUser = () => {
     const [axiosSecure] = useAxiosSecure();
     const {data: users = [], refetch} = useQuery(['users'], async() => {
         const res = await axiosSecure.get('/users')
@@ -82,14 +83,12 @@ const AllUser = () => {
     }
     return (
         <div className="w-full">
-        <div className="flex gap-6 h-10 p-5 justify-between items-center bg-purple-400">
-          <h3 className="text-2xl">Total Class: {users.length}</h3>
-        </div>
+          <SectionTitle heading="Manage User"></SectionTitle>
         <div className=" mx-5 overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
-              <tr>
+            <thead className="bg-purple-400">
+              <tr className="text-xl text-black">
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -127,4 +126,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default ManageUser;
