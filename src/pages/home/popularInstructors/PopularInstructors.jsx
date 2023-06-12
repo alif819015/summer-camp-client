@@ -4,7 +4,7 @@ import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 const PopularInstructors = () => {
     const [menu, setMenu] = useState([]);
     useEffect(() => {
-      fetch("http://localhost:5000/instractore")
+      fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore")
         .then((res) => res.json())
         .then((data) => setMenu(data));
     }, []);

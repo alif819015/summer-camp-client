@@ -4,9 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaCartPlus } from 'react-icons/fa';
 import useCart from "../../hokes/useCart";
+import useAdmin from "../../hokes/useAdmin";
+import useInstructor from "../../hokes/useInstructor";
 
 
 const NavBar = () => {
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
   const [cart] = useCart();
@@ -20,12 +25,20 @@ const NavBar = () => {
   };
   const navOption = (
     <>
-      <li className="flex md:flex-row text-lg md:text-yellow-600 sm:text-black font-semibold">
+      <li className="flex md:flex-row text-lg items-center md:text-white sm:text-black font-semibold">
         <Link to="/">Home</Link>
         <Link to="/allInstructor">Instructors</Link>
         <Link to="/allClass">Classes</Link>
-        <Link to="/">Dashboard </Link>
-        <Link to="/dashboard/myCart">
+        {isAdmin? 
+        <Link to="/dashboard/adminHome">Dashboard </Link>:
+        isInstructor?
+        <Link to="/dashboard/instructorHome">Dashboard </Link>:
+        <Link to="/dashboard/userHome">Dashboard </Link>
+
+        }
+
+
+        <Link to="/dashboard">
           <button className="btn btn-active btn-ghost">
             <FaCartPlus className="text-xl text-white"></FaCartPlus>
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
@@ -36,7 +49,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar md:bg-gray-300 md:px-20 sm:px-2">
+    <div className="navbar md:bg-gray-500 md:px-20 sm:px-2">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

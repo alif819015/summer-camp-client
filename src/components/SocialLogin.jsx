@@ -17,7 +17,7 @@ const SocialLogin = () => {
             console.log(loggedUser);
 
             const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
-          fetch("http://localhost:5000/users",{
+          fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users",{
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(saveUser)
@@ -41,7 +41,7 @@ const SocialLogin = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
-          fetch("http://localhost:5000/users",{
+          fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users",{
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(saveUser)

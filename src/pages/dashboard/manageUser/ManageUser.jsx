@@ -24,7 +24,7 @@ const ManageUser = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/users/admin/${item._id}`,{
+              fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/users/admin/${item._id}`,{
                 method: 'DELETE',
               })
               .then(res=> res.json())
@@ -42,7 +42,7 @@ const ManageUser = () => {
           })
     }
     const handleMakeAdmin = item =>{
-        fetch(`http://localhost:5000/users/admin/${item._id}`,{
+        fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/users/admin/${item._id}`,{
             method: 'PATCH',
 
         })
@@ -62,7 +62,7 @@ const ManageUser = () => {
         })
     }
     const handleMakeInstructor = item =>{
-        fetch(`http://localhost:5000/users/instructor/${item._id}`,{
+        fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/users/instructor/${item._id}`,{
             method: 'PATCH',
 
         })
@@ -82,7 +82,7 @@ const ManageUser = () => {
         })
     }
     return (
-        <div className="w-full">
+        <div className="w-full min-h-full">
           <SectionTitle heading="Manage User"></SectionTitle>
         <div className=" mx-5 overflow-x-auto">
           <table className="table">

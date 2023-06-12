@@ -3,8 +3,8 @@ import logo from "../../assets/logo/logo.png";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-base-300 text-base-content">
+    <div className="bg-gray-500 text-white">
+      <footer className="footer p-10 ">
         <div>
           {/* TODO:  */}
           <img className="w-20" src={logo} alt="" />
@@ -47,20 +47,20 @@ const Footer = () => {
           </div>
           <div className="mt-3">
             <div className="grid grid-flow-col gap-4 text-3xl">
-              <a className="text-blue-600">
+              <a className="text-blue-100">
                 <FaFacebook></FaFacebook>
               </a>
-              <a className="text-red-600">
+              <a className="text-red-100">
                 <FaYoutube></FaYoutube>
               </a>
-              <a className="text-blue-600">
+              <a className="text-blue-100">
                 <FaTwitter></FaTwitter>
               </a>
             </div>
           </div>
         </div>
       </footer>
-      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+      <footer className="footer footer-center p-4 ">
         <div>
           <p>Copyright © 2023 - All right reserved by PlayInspire Ltd</p>
         </div>

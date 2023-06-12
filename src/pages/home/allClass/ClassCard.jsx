@@ -16,7 +16,7 @@ const ClassCard = ({ item }) => {
     console.log(item);
     if (user && user.email) {
         const cartItem = {classItemId: _id, InstructorName, image, price, email: user.email}
-        fetch('http://localhost:5000/carts',{
+        fetch('https://assignment-12-summer-camp-server-alif819015.vercel.app/carts',{
             method: 'POST',
             headers: {
                 'content-type':'application/json'

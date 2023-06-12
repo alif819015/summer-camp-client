@@ -18,7 +18,7 @@ const MyCart = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/carts/${item._id}`,{
+          fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/carts/${item._id}`,{
             method: 'DELETE',
           })
           .then(res=> res.json())
@@ -36,8 +36,8 @@ const MyCart = () => {
       })
   }
   return (
-    <div className="w-full">
-      <div className="flex gap-6 h-10 p-5 justify-between items-center bg-purple-400">
+    <div className="w-full min-h-full">
+      <div className="flex gap-6 mx-6 h-10 p-5 justify-between items-center bg-purple-400">
         <h3 className="text-2xl">Total Class: {cart.length}</h3>
         <h3 className="text-2xl">Total Price: ${total.toFixed(2)}</h3>
       </div>

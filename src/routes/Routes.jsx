@@ -17,6 +17,10 @@ import AdminRouter from "./privateRoute/AdminRouter";
 import ManageClass from "../pages/dashboard/manageClass/ManageClass";
 import ManageUser from "../pages/dashboard/manageUser/ManageUser";
 import Payment from "../pages/dashboard/payment/Payment";
+import UserHome from "../pages/dashboard/userHome/UserHome";
+import AdminHome from "../pages/dashboard/adminHome/AdminHome";
+import InstructorHome from "../pages/dashboard/instructorHome/InstructorHome";
+import EnrolledClass from "../pages/dashboard/enrolleClass/EnrolledClass";
 
   export const router = createBrowserRouter([
     {
@@ -54,26 +58,50 @@ import Payment from "../pages/dashboard/payment/Payment";
       path:'dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
+       
+        {
+          path: 'userHome',
+          element: <UserHome></UserHome>
+        },
+
         {
           path: 'myCart',
           element: <MyCart></MyCart>
         },
+
+        {
+          path: 'enrolled',
+          element: <EnrolledClass></EnrolledClass>
+        },
+
         {
           path: 'payment',
           element: <Payment></Payment>
         },
-
+        
         {
-          path: 'manageUser',
-          element: <ManageUser></ManageUser>
+          path: 'instructorHome',
+          element: <InstructorRouter><InstructorHome></InstructorHome></InstructorRouter>
         },
+
         {
           path: 'addClass',
           element: <InstructorRouter><AddClass></AddClass></InstructorRouter>
         },
+        
+        {
+          path: 'adminHome',
+          element: <AdminRouter><AdminHome></AdminHome></AdminRouter>
+        },
+       
         {
           path: 'manageClass',
           element: <AdminRouter><ManageClass></ManageClass></AdminRouter>
+        },
+
+        {
+          path: 'manageUser',
+          element: <AdminRouter><ManageUser></ManageUser></AdminRouter>
         },
       ]
     }
