@@ -1,69 +1,83 @@
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import logo from "../../assets/logo/logo.png";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-500 text-white">
-      <footer className="footer p-10 ">
-        <div>
-          <img className="w-20" src={logo} alt="" />
+    <div className="bg-gray-300">
+      <footer className="footer p-6 md:p-10 lg:p-10">
+        <div className="mb-6 md:mb-0">
+          <img className="w-16 mb-4" src={logo} alt="" />
           <p>
             <span className="text-2xl font-semibold">PlayInspire</span>
             <br />
-            
           </p>
         </div>
-        <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Please contact us at:</a>
-          <a className="link link-hover">Email: info@sports.com</a>
-          <a className="link link-hover">Phone: +1-123-456-7890</a>
-          <a className="link link-hover">Privacy Policy</a>
-        </div>
-        <div>
-          <span className="footer-title">Company</span>
-          <a className="link link-hover"> Address: </a>
-          <a className="link link-hover">123 Main Street        |
-|    City, State ZIP        |
-|    Country </a>
+
+        <nav>
+          <header className="footer-title">Services</header>
+          <a className="link link-hover">Branding</a>
+          <a className="link link-hover">Design</a>
+          <a className="link link-hover">Marketing</a>
+          <a className="link link-hover">Advertisement</a>
+        </nav>
+        <nav>
+          <header className="footer-title">Company</header>
+          <a className="link link-hover">About us</a>
+          <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
-        </div>
-        <div>
-          <span className="footer-title">Newsletter</span>
-          <div className="form-control w-80">
+        </nav>
+        <nav>
+          <header className="footer-title">Legal</header>
+          <a className="link link-hover">Terms of use</a>
+          <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Cookie policy</a>
+        </nav>
+        <form>
+          <header className="footer-title">Newsletter</header>
+          <fieldset className="form-control w-80">
             <label className="label">
               <span className="label-text">Enter your email address</span>
             </label>
-            <div className="relative">
+            <div className="join">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered w-full pr-16"
+                className="input input-bordered join-item"
               />
-              <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
-                Subscribe
-              </button>
+              <button className="btn btn-primary join-item">Subscribe</button>
             </div>
-          </div>
-          <div className="mt-3">
+          </fieldset>
+          <div className="mt-1">
             <div className="grid grid-flow-col gap-4 text-3xl">
-              <a className="text-blue-100">
-                <FaFacebook></FaFacebook>
+              <a
+                href="https://www.facebook.com/mahmud.hassan.140193"
+                className="text-blue-700 text-2xl"
+              >
+                <FaFacebook />
               </a>
-              <a className="text-red-100">
-                <FaYoutube></FaYoutube>
+              <a
+                href="https://github.com/alif819015"
+                className="text-black text-2xl"
+              >
+                <FaGithub />
               </a>
-              <a className="text-blue-100">
-                <FaTwitter></FaTwitter>
+              <a
+                href="https://www.linkedin.com/in/mahmudhasan819015"
+                className="text-blue-700 text-2xl"
+              >
+                <FaLinkedin />
               </a>
             </div>
           </div>
-        </div>
+        </form>
       </footer>
-      <footer className="footer footer-center p-4 ">
+      
+      <footer className="footer footer-center p-4">
         <div>
-          <p>Copyright © 2023 - All right reserved by PlayInspire Ltd</p>
+          <p className="text-center">
+            Copyright © 2023 - All rights reserved by PlayInspire Ltd
+          </p>
         </div>
       </footer>
     </div>

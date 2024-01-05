@@ -2,9 +2,12 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../hokes/useAxiosSecure";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../../shared/sectionTitle/SectionTitle";
+import { useContext } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 const AddClass = () => {
+  const {user} = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
@@ -59,6 +62,8 @@ const AddClass = () => {
           <input
             type="text"
             placeholder="Instructor name"
+            defaultValue={user?.displayName}
+            readOnly
             {...register("name", { required: true })}
             className="input input-bordered w-full "
           />
@@ -67,6 +72,8 @@ const AddClass = () => {
           <input
             type="text"
             placeholder="Instructor email"
+            defaultValue={user?.email}
+            readOnly
             {...register("email", { required: true })}
             className="input input-bordered w-full "
           />
