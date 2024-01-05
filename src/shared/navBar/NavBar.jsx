@@ -13,7 +13,6 @@ const NavBar = () => {
   const [isInstructor] = useInstructor();
 
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
   const [cart] = useCart();
 
   const handleLogOut = () => {

@@ -35,17 +35,17 @@ const Footer = () => {
         </nav>
         <form>
           <header className="footer-title">Newsletter</header>
-          <fieldset className="form-control w-80">
+          <fieldset className="form-control w-50">
             <label className="label">
               <span className="label-text">Enter your email address</span>
             </label>
-            <div className="join">
+            <div className="flex">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered join-item"
+                className="input input-bordered w-[168px] rounded-l-lg rounded-r-none"
               />
-              <button className="btn btn-primary join-item">Subscribe</button>
+              <button className="btn btn-primary rounded-r-lg rounded-l-none">Subscribe</button>
             </div>
           </fieldset>
           <div className="mt-1">
@@ -72,7 +72,7 @@ const Footer = () => {
           </div>
         </form>
       </footer>
-      
+
       <footer className="footer footer-center p-4">
         <div>
           <p className="text-center">

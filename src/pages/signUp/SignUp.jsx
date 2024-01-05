@@ -20,12 +20,12 @@ const SignUp = () => {
     }
 
     if (!/(?=.*[A-Z])/.test(data.password)) {
-      setError("Please at least add one Uppercase");
+      setError("The password field needs to add at least one Uppercase");
       return;
     }
 
     if (!/(?=.*[!@#$&*])/.test(data.password)) {
-      setError("Please at least add one special character");
+      setError("The password field needs to add at least one special character");
       return;
     }
     createUser(data.email, data.password).then((result) => {

@@ -60,12 +60,10 @@ displayName: name , photoURL: photo
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
 
       if(currentUser){
         axios.post('https://assignment-12-summer-camp-server-alif819015.vercel.app/jwt', {email: currentUser.email})
         .then(data =>{
-          console.log(data.data.token)
           localStorage.setItem('access-token', data.data.token)
           setLoading(false);
         })

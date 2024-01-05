@@ -17,8 +17,8 @@ const TopSlider = () => {
         <Swiper
           spaceBetween={50}
           slidesPerView={4}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>
             <div className="card w-64 bg-base-100 shadow-xl">

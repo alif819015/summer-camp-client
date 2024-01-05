@@ -47,7 +47,7 @@ const Login = () => {
   }
 
   return (
-    <div className="bgImage hero min-h-screen bg-base-200">
+    <div className="bgImagelogin hero min-h-screen bg-base-200">
       <div className="hero-content mt-20 flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl text-white font-bold px-10">Please login!</h1>
