@@ -23,15 +23,19 @@ const PopularInstructors = () => {
         breakpoints={{
           320: {
             slidesPerView: 1,
+            spaceBetween: 10,
           },
           768: {
             slidesPerView: 2,
+            spaceBetween: 20,
           },
           1024: {
             slidesPerView: 3,
+            spaceBetween: 30,
           },
           1280: {
             slidesPerView: 4,
+            spaceBetween: 40,
           },
         }}
       >
@@ -41,8 +45,8 @@ const PopularInstructors = () => {
               <div className="card card-compact bg-base-100 shadow-xl">
                 <figure>
                   <img
-                    className="h-48 md:h-40 lg:h-48 xl:h-64 w-full object-cover"
-                    src={item.image}
+                    className="h-80 w-full"
+                    src={item.image || "placeholder.jpg"}
                     alt={item.name}
                   />
                 </figure>

@@ -1,6 +1,6 @@
 import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/swiper-bundle.min.css";
 import Container from "../../../shared/container/Container";
 import img1 from "../../../assets/sports/football1.jpg";
 import img2 from "../../../assets/sports/bascket1.jpg";
@@ -15,85 +15,40 @@ const TopSlider = () => {
       <SectionTitle heading="Top Slider"></SectionTitle>
       <Container>
         <Swiper
-          spaceBetween={50}
-          slidesPerView={4}
-          // onSlideChange={() => console.log("slide change")}
-          // onSwiper={(swiper) => console.log(swiper)}
+          spaceBetween={10}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+          }}
         >
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img1} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Lionel Messi</h2>
-                <p>Lionel Andrés Messi, also known as Leo Messi, is an Argentine professional footballer</p>
-                
+          {Array.from({ length: 6 }).map((_, index) => (
+            <SwiperSlide key={index}>
+              <div className="card bg-base-100 shadow-xl mb-7">
+                <figure>
+                  <img
+                    className="h-80 w-full"
+                    src={index === 0 ? img1 : index === 1 ? img2 : index === 2 ? img3 : index === 3 ? img4 : index === 4 ? img5 : img6}
+                    alt={`Image ${index + 1}`}
+                  />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title text-xl">{`Player ${index + 1}`}</h2>
+                  <p>{`Player ${index + 1} description goes here.`}</p>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img2} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Kawhi Leonard</h2>
-                <p>Kawhi Anthony Leonard is an American professional basketball player for the Los</p>
-                
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img3} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shahid Afridi</h2>
-                <p>Sahibzada Mohammad Shahid Khan Afridi is a captain of the Pakistan cricket team.</p>
-                
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img4} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Cristiano Ronaldo</h2>
-                <p>Cristiano Ronaldo dos Santos Aveiro GOIH ComM is a Portuguese footballer</p>
-                
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img5} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Damian Lillard</h2>
-                <p>Damian Lamonte Ollie Lillard Sr. is an American professional basketball player </p>
-                
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card w-64 bg-base-100 shadow-xl">
-              <figure>
-                <img className="h-[200px] md:h-[300px] w-full" src={img6} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shane Watson</h2>
-                <p>Shane Robert Watson is an Australian former cricketer who played for and occasionally </p>
-                
-              </div>
-            </div>
-          </SwiperSlide>
-          
-          ...
+            </SwiperSlide>
+          ))}
         </Swiper>
       </Container>
     </div>
