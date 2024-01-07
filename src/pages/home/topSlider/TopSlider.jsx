@@ -2,14 +2,25 @@ import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import Container from "../../../shared/container/Container";
-import img1 from "../../../assets/sports/football1.jpg";
-import img2 from "../../../assets/sports/bascket1.jpg";
-import img3 from "../../../assets/sports/cricket1.jpg";
-import img4 from "../../../assets/sports/football2.jpg";
-import img5 from "../../../assets/sports/bascket2.jpg";
-import img6 from "../../../assets/sports/cricket2.jpg";
+import { useEffect, useState } from "react";
 
 const TopSlider = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("./../../../../public/topslider.json");
+        const jsonData = await response.json();
+        setData(jsonData);
+        // console.log(jsonData)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div>
       <SectionTitle heading="Top Slider"></SectionTitle>
@@ -32,19 +43,20 @@ const TopSlider = () => {
             },
           }}
         >
-          {Array.from({ length: 6 }).map((_, index) => (
-            <SwiperSlide key={index}>
-              <div className="card bg-base-100 shadow-xl mb-7">
+          {data.map((playear) => (
+            <SwiperSlide key={playear.id}>
+              <div className="card bg-base-100 shadow-xl mb-7 font-extralight">
                 <figure>
-                  <img
-                    className="h-80 w-full"
-                    src={index === 0 ? img1 : index === 1 ? img2 : index === 2 ? img3 : index === 3 ? img4 : index === 4 ? img5 : img6}
-                    alt={`Image ${index + 1}`}
-                  />
+                  <img className="h-80 w-full" src={playear.image} alt="" />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title text-xl">{`Player ${index + 1}`}</h2>
-                  <p>{`Player ${index + 1} description goes here.`}</p>
+                  <h2 className="card-title text-xl ">
+                    Name: {playear.name}
+                  </h2>
+                  <p>
+                    <span className="font-semibold">Description:</span>{" "}
+                    {playear.description}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>

@@ -19,7 +19,6 @@ const PopularInstructors = () => {
       <SectionTitle heading="Popular Instructors"></SectionTitle>
       <Swiper
         spaceBetween={10}
-        slidesPerView={4}
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -41,17 +40,17 @@ const PopularInstructors = () => {
       >
         {menu.map((item) => (
           <SwiperSlide key={item._id}>
-            <div className="my-5 mx-1">
+            <div className="my-8 md:my-10 xl:my-12 mx-1">
               <div className="card card-compact bg-base-100 shadow-xl">
                 <figure>
                   <img
-                    className="h-80 w-full"
+                    className="h-80 w-full "
                     src={item.image || "placeholder.jpg"}
                     alt={item.name}
                   />
                 </figure>
-                <div className="card-body">
-                  <h2 className="card-title text-xl md:text-lg lg:text-xl xl:text-2xl">
+                <div className="card-body font-extralight">
+                  <h2 className="card-title text-lg xl:text-xl">
                     {item.name}
                   </h2>
                   <p className="text-sm md:text-xs lg:text-sm xl:text-base">
