@@ -1,0 +1,7 @@
+.carousel-root {
+  overflow: hidden;
+}
+
+.carousel .slide {
+  transition: transform 1s ease-in-out;
+}

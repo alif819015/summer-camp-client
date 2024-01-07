@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import ban1 from "../../../assets/banner/football.jpg";
@@ -6,8 +7,22 @@ import ban3 from "../../../assets/banner/crecate.jpg";
 import Cover from "../../../shared/cover/Cover";
 
 const Banner = () => {
+  const [selectedSlide, setSelectedSlide] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSelectedSlide((prevSlide) => (prevSlide + 1) % 3);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <Carousel>
+    <Carousel
+      selectedItem={selectedSlide}
+      transitionTime={1000}
+      dynamicHeight={false}
+    >
       <div>
         <Cover
           img={ban1}
