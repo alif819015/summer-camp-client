@@ -67,7 +67,7 @@ const ClassCard = ({ item }) => {
       }
     } catch (error) {
       console.error("Error adding class to cart:", error);
-      // Handle the error as needed
+
       Swal.fire({
         icon: "error",
         title: "Oops...",

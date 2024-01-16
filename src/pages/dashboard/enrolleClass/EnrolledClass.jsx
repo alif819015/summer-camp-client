@@ -17,7 +17,6 @@ const EnrolledClass = () => {
         setItems(data);
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Handle the error as needed
       }
     };
 

@@ -6,21 +6,24 @@ import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 
 const AllInstructor = () => {
   const [menu, setmenu] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore");
-        
+        const response = await fetch(
+          "https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore"
+        );
+
         if (!response.ok) {
-          throw new Error(`Failed to fetch instructors. Status: ${response.status}`);
+          throw new Error(
+            `Failed to fetch instructors. Status: ${response.status}`
+          );
         }
 
         const data = await response.json();
         setmenu(data);
       } catch (error) {
-        console.error('Error fetching instructors:', error);
-        // Handle the error as needed
+        console.error("Error fetching instructors:", error);
       }
     };
 
@@ -29,7 +32,7 @@ const AllInstructor = () => {
   return (
     <div>
       <Cover img={img}></Cover>
-      <SectionTitle heading='Instructors'></SectionTitle>
+      <SectionTitle heading="Instructors"></SectionTitle>
       <div className="my-10 mx-16 grid md:grid-cols-3 gap-8">
         {menu.map((item) => (
           <InstructorCard key={item._id} item={item}></InstructorCard>

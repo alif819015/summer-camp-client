@@ -19,17 +19,20 @@ const PopularInstructors = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore");
+        const response = await fetch(
+          "https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore"
+        );
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch instructors. Status: ${response.status}`);
+          throw new Error(
+            `Failed to fetch instructors. Status: ${response.status}`
+          );
         }
 
         const data = await response.json();
         setMenu(data);
       } catch (error) {
-        console.error('Error fetching instructors:', error);
-        // Handle the error as needed
+        console.error("Error fetching instructors:", error);
       }
     };
 
@@ -71,9 +74,7 @@ const PopularInstructors = () => {
                   />
                 </figure>
                 <div className="card-body font-extralight">
-                  <h2 className="card-title text-lg xl:text-xl">
-                    {item.name}
-                  </h2>
+                  <h2 className="card-title text-lg xl:text-xl">{item.name}</h2>
                   <p className="text-sm md:text-xs lg:text-sm xl:text-base">
                     {item.email}
                   </p>

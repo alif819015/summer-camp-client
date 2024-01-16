@@ -10,19 +10,22 @@ const MyCart = () => {
   const handleDelete = async (item) => {
     try {
       const result = await Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't to delete this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
       });
 
       if (result.isConfirmed) {
-        const response = await fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/carts/${item._id}`, {
-          method: 'DELETE',
-        });
+        const response = await fetch(
+          `https://assignment-12-summer-camp-server-alif819015.vercel.app/carts/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`Failed to delete item. Status: ${response.status}`);
@@ -32,21 +35,13 @@ const MyCart = () => {
 
         if (data.deletedCount > 0) {
           refetch();
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          );
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
       }
     } catch (error) {
       console.error("Error deleting item:", error);
-      // Handle the error as needed
-      Swal.fire(
-        'Error!',
-        'Failed to delete item.',
-        'error'
-      );
+
+      Swal.fire("Error!", "Failed to delete item.", "error");
     }
   };
   return (
@@ -69,12 +64,10 @@ const MyCart = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                cart.map((item, index) => <tr key={item._id}>
+            {cart.map((item, index) => (
+              <tr key={item._id}>
                 <th>
-                  <label>
-                   {index + 1}
-                  </label>
+                  <label>{index + 1}</label>
                 </th>
                 <th>
                   <div className="flex items-center space-x-3">
@@ -91,16 +84,20 @@ const MyCart = () => {
                 <td>{item.InstructorName}</td>
                 <th>${item.price}</th>
                 <th>
-                  <button onClick={()=> handleDelete(item)} className="btn btn-ghost bg-purple-600 text-white"><FaTrash></FaTrash></button>
+                  <button
+                    onClick={() => handleDelete(item)}
+                    className="btn btn-ghost bg-purple-600 text-white"
+                  >
+                    <FaTrash></FaTrash>
+                  </button>
                 </th>
                 <th>
-                  <Link to='/dashboard/payment'>
-                  <button className="btn btn-xs btn-success">Pay</button>
+                  <Link to="/dashboard/payment">
+                    <button className="btn btn-xs btn-success">Pay</button>
                   </Link>
                 </th>
-              </tr>)
-            }
-            
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

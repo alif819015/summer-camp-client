@@ -18,7 +18,6 @@ const PaymentHistory = () => {
         });
     } catch (error) {
       console.error("Error fetching payment history:", error);
-      // Handle the error as needed
     }
   }, []);
   return (
