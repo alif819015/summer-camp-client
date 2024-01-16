@@ -13,64 +13,63 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    if (!/^.{6,}$/.test(data.password)) {
-      setError("Please provide at list 6 character");
-      return;
-    }
 
-    if (!/(?=.*[A-Z])/.test(data.password)) {
-      setError("The password field needs to add at least one Uppercase");
-      return;
-    }
+  const onSubmit = async (data) => {
+    try {
+      if (!/^.{6,}$/.test(data.password)) {
+        throw new Error(
+          "Please provide at least 6 characters for the password."
+        );
+      }
 
-    if (!/(?=.*[!@#$&*])/.test(data.password)) {
-      setError("The password field needs to add at least one special character");
-      return;
-    }
-    createUser(data.email, data.password).then((result) => {
+      if (!/(?=.*[A-Z])/.test(data.password)) {
+        throw new Error(
+          "The password field needs to add at least one Uppercase."
+        );
+      }
+
+      if (!/(?=.*[!@#$&*])/.test(data.password)) {
+        throw new Error(
+          "The password field needs to add at least one special character."
+        );
+      }
+
+      const result = await createUser(data.email, data.password);
       const loggedUser = result.user;
       console.log(loggedUser);
       setError("");
       setSuccess("");
 
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          const saveUser = {name: data.name, email: data.email}
-          fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users",{
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(saveUser)
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "User Created Successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate("/");
-              }
-            });
-          setSuccess("User Has ben created success fully");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User Created Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate("/");
-        })
-        .catch((error) => {
-          setError(error.message);
+      await updateUserProfile(data.name, data.photoURL);
+
+      const saveUser = { name: data.name, email: data.email };
+
+      const response = await fetch(
+        "https://assignment-12-summer-camp-server-alif819015.vercel.app/users",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(saveUser),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (responseData.insertedId) {
+        reset();
+        setSuccess("User has been created successfully");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1500,
         });
-    });
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -169,9 +168,9 @@ const SignUp = () => {
             </a>
           </Form>
           <div className="divider">OR</div>
-            <div className=" mb-8 flex gap-4 text-3xl mx-auto">
+          <div className=" mb-8 flex gap-4 text-3xl mx-auto">
             <SocialLogin></SocialLogin>
-            </div>
+          </div>
         </div>
       </div>
     </div>

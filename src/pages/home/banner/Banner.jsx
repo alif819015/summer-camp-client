@@ -22,10 +22,10 @@ const Banner = () => {
       selectedItem={selectedSlide}
       transitionTime={1000}
       dynamicHeight={false}
+      showThumbs={false}
     >
       <div>
         <Cover
-        
           img={ban1}
           title="Foot Ball"
           subTitle="Football, also known as soccer in some countries, is a popular sport played worldwide. It is a team sport that involves two teams, each consisting of eleven players, competing against each other to score goals by kicking a ball into the opponent's net. Football is played on a rectangular field called a pitch, with the objective of outscoring the opposing team."

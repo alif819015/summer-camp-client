@@ -10,51 +10,52 @@ const SocialLogin = () => {
 
     const {  googleLogin, githubUser } = useContext(AuthContext)
 
-    const handleGoogle = () => {
-        googleLogin()
-          .then((result) => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
+    const handleGoogle = async () => {
+      try {
+          const result = await googleLogin();
+          const loggedUser = result.user;
+          console.log(loggedUser);
 
-            const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
-          fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users",{
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(saveUser)
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                
-                navigate(from, { replace: true });
-              }
-            });
-          })
-          .catch((error) => {
-            console.log(error);
+          const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+
+          const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users", {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(saveUser)
           });
-      };
-    
-      const handleGithub = () => {
-        githubUser()
-          .then((result) => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
-          fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users",{
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(saveUser)
-          })
-            .then((res) => res.json())
-            .then(() => {
-                navigate(from, { replace: true });
-            });
-          })
-          .catch((error) => {
-            console.log(error);
+
+          const data = await response.json();
+          if (data.insertedId) {
+              navigate(from, { replace: true });
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  };
+
+  const handleGithub = async () => {
+      try {
+          const result = await githubUser();
+          const loggedUser = result.user;
+          console.log(loggedUser);
+
+          const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+
+          const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/users", {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(saveUser)
           });
-      };
+
+          // If you don't need the response data, you can omit the next line.
+          await response.json();
+
+          navigate(from, { replace: true });
+      } catch (error) {
+          console.error(error);
+      }
+  };
+
 
     return (
         <div>

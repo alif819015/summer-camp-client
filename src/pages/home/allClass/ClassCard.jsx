@@ -11,46 +11,68 @@ const ClassCard = ({ item }) => {
   const location = useLocation();
   const { user } = useContext(AuthContext);
 
-
-  const handleAddToCard = (item) => {
-    console.log(item);
-    if (user && user.email) {
-        const cartItem = {classItemId: _id, InstructorName, image, price, email: user.email}
-        fetch('https://assignment-12-summer-camp-server-alif819015.vercel.app/carts',{
-            method: 'POST',
+  const handleAddToCard = async (item) => {
+    try {
+      console.log(item);
+      if (user && user.email) {
+        const cartItem = {
+          classItemId: _id,
+          InstructorName,
+          image,
+          price,
+          email: user.email,
+        };
+        const response = await fetch(
+          "https://assignment-12-summer-camp-server-alif819015.vercel.app/carts",
+          {
+            method: "POST",
             headers: {
-                'content-type':'application/json'
+              "content-type": "application/json",
             },
-            body: JSON.stringify(cartItem)
-        })
-        .then(res => res.json())
-        .then( data => {
-            if(data.insertedId){
-                refetch();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Your Class has been added',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
-           
-        })
-    }
-    else{
+            body: JSON.stringify(cartItem),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to add class to cart. Status: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        if (data.insertedId) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Class has been added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      } else {
         Swal.fire({
-            title: 'Please login to join this class',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Login now'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate('/login', {from:location})
-            }
-          })
+          title: "Please login to join this class",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Login now",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/login", { from: location });
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Error adding class to cart:", error);
+      // Handle the error as needed
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong while adding the class to the cart!",
+      });
     }
   };
   return (

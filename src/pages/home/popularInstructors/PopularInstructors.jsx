@@ -4,16 +4,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 const PopularInstructors = () => {
+  // const [menu, setMenu] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(
+  //     "https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore"
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => setMenu(data));
+  // }, []);
+
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore"
-    )
-      .then((res) => res.json())
-      .then((data) => setMenu(data));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore");
 
+        if (!response.ok) {
+          throw new Error(`Failed to fetch instructors. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setMenu(data);
+      } catch (error) {
+        console.error('Error fetching instructors:', error);
+        // Handle the error as needed
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="mx-2 md:mx-3 lg:mx-10">
       <SectionTitle heading="Popular Instructors"></SectionTitle>

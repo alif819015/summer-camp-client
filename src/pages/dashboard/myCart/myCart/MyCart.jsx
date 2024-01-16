@@ -7,8 +7,9 @@ const MyCart = () => {
   const [cart, refetch] = useCart();
   const total = cart.reduce((sum, item) => item.price + sum, 0);
 
-  const handleDelete = item =>{
-    Swal.fire({
+  const handleDelete = async (item) => {
+    try {
+      const result = await Swal.fire({
         title: 'Are you sure?',
         text: "You won't to delete this!",
         icon: 'warning',
@@ -16,25 +17,38 @@ const MyCart = () => {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/carts/${item._id}`,{
-            method: 'DELETE',
-          })
-          .then(res=> res.json())
-          .then(data=>{
-            if(data.deletedCount > 0){
-                refetch();
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
-            }
-          })
+      });
+
+      if (result.isConfirmed) {
+        const response = await fetch(`https://assignment-12-summer-camp-server-alif819015.vercel.app/carts/${item._id}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to delete item. Status: ${response.status}`);
         }
-      })
-  }
+
+        const data = await response.json();
+
+        if (data.deletedCount > 0) {
+          refetch();
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Error deleting item:", error);
+      // Handle the error as needed
+      Swal.fire(
+        'Error!',
+        'Failed to delete item.',
+        'error'
+      );
+    }
+  };
   return (
     <div className="w-full min-h-full">
       <div className="flex gap-6 mx-6 h-10 p-5 justify-between items-center bg-purple-400">

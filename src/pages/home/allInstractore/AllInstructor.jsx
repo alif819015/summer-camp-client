@@ -6,10 +6,25 @@ import SectionTitle from "../../../shared/sectionTitle/SectionTitle";
 
 const AllInstructor = () => {
   const [menu, setmenu] = useState([]);
+  
   useEffect(() => {
-    fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore")
-      .then((res) => res.json())
-      .then((data) => setmenu(data));
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore");
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch instructors. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setmenu(data);
+      } catch (error) {
+        console.error('Error fetching instructors:', error);
+        // Handle the error as needed
+      }
+    };
+
+    fetchData();
   }, []);
   return (
     <div>
