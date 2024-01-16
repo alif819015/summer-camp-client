@@ -10,7 +10,7 @@ const TopSlider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("./../../../../public/topslider.json");
+        const response = await fetch("/topslider.json");
         const jsonData = await response.json();
         setData(jsonData);
         // console.log(jsonData)
