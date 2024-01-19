@@ -47,6 +47,6 @@
 
 * live link: https://summer-camp-71b55.web.app
 
-* admin email: mahmudhasan111@gmail.com
+* admin email: mahmud@gmail.com
 
-* admin password: 123456A@
+* admin password: @M123456
