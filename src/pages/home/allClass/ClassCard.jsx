@@ -23,7 +23,7 @@ const ClassCard = ({ item }) => {
           email: user.email,
         };
         const response = await fetch(
-          "https://assignment-12-summer-camp-server-alif819015.vercel.app/carts",
+          "https://assignment-12-summer-camp-server.vercel.app/carts",
           {
             method: "POST",
             headers: {

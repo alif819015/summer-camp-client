@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
-    GithubAuthProvider,
-    GoogleAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
@@ -36,14 +36,12 @@ const AuthProvider = ({ children }) => {
 
   const googleLogin = () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider); 
-
+    return signInWithPopup(auth, googleProvider);
   };
 
   const githubUser = () => {
     setLoading(true);
     return signInWithPopup(auth, gitHubProvider);
-
   };
 
   const logOut = () => {
@@ -51,28 +49,30 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUserProfile = (name, photo)=>{
-    return updateProfile(auth.currentUser,{
-displayName: name , photoURL: photo
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
     });
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
-      if(currentUser){
-        axios.post('https://assignment-12-summer-camp-server-alif819015.vercel.app/jwt', {email: currentUser.email})
-        .then(data =>{
-          localStorage.setItem('access-token', data.data.token)
-          setLoading(false);
-        })
-      }
-      else{
-        localStorage.removeItem('access-token')
+      if (currentUser) {
+        axios
+          .post("https://assignment-12-summer-camp-server.vercel.app/jwt", {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
         setLoading(false);
       }
-
     });
     return () => {
       return unsubscribe();
@@ -87,12 +87,10 @@ displayName: name , photoURL: photo
     logOut,
     googleLogin,
     githubUser,
-    updateUserProfile
+    updateUserProfile,
   };
   return (
-    <AuthContext.Provider value={authInfo}>
-        {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

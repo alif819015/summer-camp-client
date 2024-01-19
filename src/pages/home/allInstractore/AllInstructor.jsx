@@ -11,7 +11,7 @@ const AllInstructor = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://assignment-12-summer-camp-server-alif819015.vercel.app/instractore"
+          "https://assignment-12-summer-camp-server.vercel.app/instractore"
         );
 
         if (!response.ok) {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import { useContext } from "react";
@@ -6,7 +7,6 @@ import { FaCartPlus } from 'react-icons/fa';
 import useCart from "../../hokes/useCart";
 import useAdmin from "../../hokes/useAdmin";
 import useInstructor from "../../hokes/useInstructor";
-
 
 const NavBar = () => {
   const [isAdmin] = useAdmin();
@@ -22,18 +22,29 @@ const NavBar = () => {
         console.log(error);
       });
   };
+
+  // State to manage the visibility of the dropdown
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  // Function to toggle the dropdown visibility
+  const toggleDropdown = () => {
+    console.log("Toggle dropdown");
+    setDropdownOpen(!isDropdownOpen);
+  };
+
   const navOption = (
     <>
       <li className="flex md:flex-row text-lg items-center md:text-white sm:text-black font-semibold">
         <Link to="/">Home</Link>
         <Link to="/allInstructor">Instructors</Link>
         <Link to="/allClass">Classes</Link>
-        {isAdmin? 
-        <Link to="/dashboard/adminHome">Dashboard </Link>:
-        isInstructor?
-        <Link to="/dashboard/instructorHome">Dashboard </Link>:
-        <Link to="/dashboard/userHome">Dashboard </Link>
-        }
+        {isAdmin ? (
+          <Link to="/dashboard/adminHome">Dashboard </Link>
+        ) : isInstructor ? (
+          <Link to="/dashboard/instructorHome">Dashboard </Link>
+        ) : (
+          <Link to="/dashboard/userHome">Dashboard </Link>
+        )}
         <Link to="/dashboard">
           <button className="btn btn-active btn-ghost">
             <FaCartPlus className="text-xl text-white"></FaCartPlus>
@@ -43,12 +54,16 @@ const NavBar = () => {
       </li>
     </>
   );
-
+ 
   return (
     <div className="navbar md:bg-gray-500 md:px-20 sm:px-2">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label
+            tabIndex={0}
+            className="btn btn-ghost lg:hidden"
+            onClick={toggleDropdown}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -65,8 +80,9 @@ const NavBar = () => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className={`menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-full ${
+              isDropdownOpen ? "block" : "hidden"
+            }`}
           >
             {navOption}
           </ul>
@@ -108,4 +124,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

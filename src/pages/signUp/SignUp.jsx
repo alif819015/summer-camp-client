@@ -45,7 +45,7 @@ const SignUp = () => {
       const saveUser = { name: data.name, email: data.email };
 
       const response = await fetch(
-        "https://assignment-12-summer-camp-server-alif819015.vercel.app/users",
+        "https://assignment-12-summer-camp-server.vercel.app/users",
         {
           method: "POST",
           headers: { "content-type": "application/json" },
