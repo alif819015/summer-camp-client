@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { FaCartPlus } from 'react-icons/fa';
+import { FaCartPlus } from "react-icons/fa";
 import useCart from "../../hokes/useCart";
 import useAdmin from "../../hokes/useAdmin";
 import useInstructor from "../../hokes/useInstructor";
@@ -23,18 +23,28 @@ const NavBar = () => {
       });
   };
 
-  // State to manage the visibility of the dropdown
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
-  // Function to toggle the dropdown visibility
   const toggleDropdown = () => {
-    console.log("Toggle dropdown");
     setDropdownOpen(!isDropdownOpen);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const navOption = (
     <>
-      <li className="flex md:flex-row text-lg items-center md:text-white sm:text-black font-semibold">
+      <li className="flex md:flex-row text-lg items-start md:items-center md:text-white sm:text-black font-semibold">
         <Link to="/">Home</Link>
         <Link to="/allInstructor">Instructors</Link>
         <Link to="/allClass">Classes</Link>
@@ -51,14 +61,37 @@ const NavBar = () => {
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
           </button>
         </Link>
+        {isSmallScreen && (
+          <>
+            {user ? (
+              <li>
+                <button
+                  className="btn btn-active btn-ghost"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signUp">Register</Link>
+                </li>
+              </>
+            )}
+          </>
+        )}
       </li>
     </>
   );
- 
+
   return (
-    <div className="navbar md:bg-gray-500 md:px-20 sm:px-2">
+    <div className="navbar bg-gray-500 md:px-20 sm:px-2">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown z-50">
           <label
             tabIndex={0}
             className="btn btn-ghost lg:hidden"
@@ -80,7 +113,7 @@ const NavBar = () => {
             </svg>
           </label>
           <ul
-            className={`menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-full ${
+            className={`menu menu-sm dropdown-content mt-3 p-2 shadow text-white bg-gray-500 rounded-box w-fit ${
               isDropdownOpen ? "block" : "hidden"
             }`}
           >
@@ -101,17 +134,10 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navOption}</ul>
       </div>
       <div className="avatar navbar-end gap-4 text-white">
-        {user ? (
-          <>
-            <button className="btn btn-active btn-ghost">
-              <Link onClick={handleLogOut}>Logout</Link>
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">login</Link>
-            <Link to="/signUp">Register</Link>
-          </>
+        {user && !isSmallScreen && (
+          <button className="btn btn-active btn-ghost" onClick={handleLogOut}>
+            Logout
+          </button>
         )}
         {user && (
           <div className="w-14 mask mask-hexagon">
