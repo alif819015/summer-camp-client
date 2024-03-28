@@ -22,7 +22,7 @@ const TopSlider = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="mt-10">
       <SectionTitle heading="Top Slider"></SectionTitle>
       <Container>
         <Swiper

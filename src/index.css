@@ -3,8 +3,21 @@
 @tailwind utilities;
 
 .drawer-side a.active {
-    color: white;
-  }
+  color: white;
+}
 .drawer-side a {
-    background-color: transparent;
-  }
+  background-color: transparent;
+}
+
+.Btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to right, #ff66b3, hsl(333, 92%, 36%));
+}
+.Btn:hover{
+  color: black;
+  background: linear-gradient(to right, #f1067c, hsl(333, 43%, 70%));
+}

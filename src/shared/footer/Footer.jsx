@@ -76,7 +76,7 @@ const Footer = () => {
       <footer className="footer footer-center p-4">
         <div>
           <p className="text-center">
-            Copyright © 2023 - All rights reserved by PlayInspire Ltd
+            Copyright © 2024 - All rights reserved by PlayInspire Ltd
           </p>
         </div>
       </footer>

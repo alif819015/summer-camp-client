@@ -1,39 +1,38 @@
 [
-    {
-      "id": "1",
-      "name": "Lionel Messi",
-      "image": "https://i.ibb.co/dGksZ4P/football1.jpg",
-      "description": "Lionel Andrés Messi, also known as Leo Messi, is an Argentine professional footballer"
-    },
-    {
-      "id": "2",
-      "name": "Kawhi Leonard",
-      "image": "https://i.ibb.co/bNywLG0/bascket1.jpg",
-      "description": "Kawhi Anthony Leonard is an American professional basketball player for the Los"
-    },
-    {
-      "id": "3",
-      "name": "Shahid Afridi",
-      "image": "https://i.ibb.co/SR9cGbZ/cricket1.jpg",
-      "description": "Sahibzada Mohammad Shahid Khan Afridi is a captain of the Pakistan cricket team."
-    },
-    {
-      "id": "4",
-      "name": "Cristiano Ronaldo",
-      "image": "https://i.ibb.co/By0VJc7/football2.jpg",
-      "description": "Cristiano Ronaldo is a professional Portuguese footballer"
-    },
-    {
-      "id": "5",
-      "name": "Damian Lillard",
-      "image": "https://i.ibb.co/87rzr7G/bascket2.jpg",
-      "description": "Damian Lamonte Ollie Lillard Sr. is an American professional basketball player"
-    },
-    {
-      "id": "6",
-      "name": "Shane Watson",
-      "image": "https://i.ibb.co/dmrWM9k/cricket2.jpg",
-      "description": "Shane Robert Watson is an Australian former cricketer who played for and occasionally"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "name": "Lionel Messi",
+    "image": "https://i.ibb.co/dGksZ4P/football1.jpg",
+    "description": "Lionel Andrés Messi, also known as Leo Messi, is an Argentine professional footballer"
+  },
+  {
+    "id": "2",
+    "name": "Kawhi Leonard",
+    "image": "https://i.ibb.co/bNywLG0/bascket1.jpg",
+    "description": "Kawhi Anthony Leonard is an American professional basketball player for the Los"
+  },
+  {
+    "id": "3",
+    "name": "Shahid Afridi",
+    "image": "https://i.ibb.co/SR9cGbZ/cricket1.jpg",
+    "description": "Sahibzada Mohammad Shahid Khan Afridi is a captain of the Pakistan cricket team."
+  },
+  {
+    "id": "4",
+    "name": "Cristiano Ronaldo",
+    "image": "https://i.ibb.co/By0VJc7/football2.jpg",
+    "description": "Cristiano Ronaldo is a professional Portuguese footballer"
+  },
+  {
+    "id": "5",
+    "name": "Damian Lillard",
+    "image": "https://i.ibb.co/87rzr7G/bascket2.jpg",
+    "description": "Damian Lamonte Ollie Lillard Sr. is an American professional basketball player"
+  },
+  {
+    "id": "6",
+    "name": "Shane Watson",
+    "image": "https://i.ibb.co/dmrWM9k/cricket2.jpg",
+    "description": "Shane Robert Watson is an Australian former cricketer who played for and occasionally"
+  }
+]

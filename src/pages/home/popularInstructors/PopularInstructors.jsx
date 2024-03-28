@@ -4,18 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 const PopularInstructors = () => {
-  // const [menu, setMenu] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(
-  //     "https://assignment-12-summer-camp-server.vercel.app/instractore"
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setMenu(data));
-  // }, []);
-
   const [menu, setMenu] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,7 +68,7 @@ const PopularInstructors = () => {
                     {item.email}
                   </p>
                   <div className="card-actions flex justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button className="Btn">Show Details</button>
                   </div>
                 </div>
               </div>

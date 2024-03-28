@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import ClassCard from "./ClassCard";
+
 import Cover from "../../../shared/cover/Cover";
-import img from "../../../assets/banner/Footballbanner.jpg";
+import img from "../../../assets/banner/sports_banner.jpg";
 import img1 from "../../../assets/banner/Footballbanner.jpg";
 import img2 from "../../../assets/banner/cricketbanner.jpg";
 import img3 from "../../../assets/banner/basketballbanner.jpg";
@@ -21,11 +20,11 @@ const AllClass = () => {
       <ClassCategory items={football} title="football"
       img={img1}></ClassCategory>
       
-      {/* <Cover img={img2}></Cover> */}
+      
       <SectionTitle heading="Cricket"></SectionTitle>
       <ClassCategory items={cricket} title="cricket" img={img2}></ClassCategory>
       
-      {/* <Cover img={img3}></Cover> */}
+      
       <SectionTitle heading="Cricket"></SectionTitle>
       <ClassCategory items={basketball} title="basketball" img={img3}></ClassCategory>
     </div>

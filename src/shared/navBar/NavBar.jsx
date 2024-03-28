@@ -89,7 +89,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-gray-500 md:px-20 sm:px-2">
+    <div className="navbar bg-gray-400 md:px-20 sm:px-2">
       <div className="navbar-start">
         <div className="dropdown z-50">
           <label
@@ -140,8 +140,10 @@ const NavBar = () => {
           </button>
         )}
         {user && (
-          <div className="w-14 mask mask-hexagon">
+          <div className="avatar online">
+            <div className="w-14 rounded-full">
             <img title={user?.displayName} src={user?.photoURL} />
+          </div>
           </div>
         )}
       </div>

@@ -15,7 +15,7 @@ const InstructorCard = ({ item }) => {
           <h2 className="card-title text-lg font-semibold">{name}</h2>
           <p className="text-sm text-gray-600">{email}</p>
           <div className="card-actions flex justify-end mt-4">
-            <button className="btn btn-primary">Buy Now</button>
+          <button className="Btn">Show Details</button>
           </div>
         </div>
       </div>
